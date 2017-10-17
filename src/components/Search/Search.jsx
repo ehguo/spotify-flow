@@ -10,7 +10,6 @@ export default class Search extends Component {
         type="text"
         autoComplete="off"
         autoFocus="true"
-        size="51"
         placeholder="Search for an artist" />
     );
   }
