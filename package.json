@@ -5,5 +5,13 @@
   "main": "index.js",
   "repository": "https://github.com/ehguo/spotify-flow",
   "author": "Edward Guo",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon server/index.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.2",
+    "nodemon": "^1.12.1"
+  }
 }
