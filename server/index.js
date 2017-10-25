@@ -89,6 +89,31 @@ app.get('/callback', (req, res) => {
   }
 });
 
+app.get('/refresh_token', (req, res) => {
+  const refresh_token = req.query.refresh_token;
+  const grant_type = 'refresh_token';
+  const authOptions = {
+    url: 'https://accounts.spotify.com/api/token',
+    headers: {
+      'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
+    },
+    form: {
+      grant_type,
+      refresh_token
+    },
+    json: true
+  };
+
+  request.post(authOptions, (err, response, body) => {
+    if (!err && response.statusCode === 200) {
+      const access_token = body.access_token;
+      res.send({
+        'access_token': access_token
+      });
+    }
+  });
+})
+
 app.listen(port, hostname, () => {
   console.log(`Server running on http://${hostname}:${port}`);
 });
